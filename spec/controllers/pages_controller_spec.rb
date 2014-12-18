@@ -4,6 +4,7 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe PagesController, :type => :controller do
+  render_views
 
   describe "GET 'home'" do
     it "should be successful" do
@@ -16,6 +17,14 @@ describe PagesController, :type => :controller do
   describe "GET 'contact'" do
     it "should be successful" do
       get 'contact'
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "GET 'about'" do
+    it "should be successful" do
+      get 'about'
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
